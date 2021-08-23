@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.zsl.mylibrary.httpsUtils.HttpRequest;
+import com.zsl.mylibrary.httpsUtils.OkHttpException;
+import com.zsl.mylibrary.httpsUtils.ResponseCallback;
 import com.zsl.testmylibrary.R;
-import com.ztzb.zsllibrary.httpsUtils.HttpRequest;
-import com.ztzb.zsllibrary.httpsUtils.OkHttpException;
-import com.ztzb.zsllibrary.httpsUtils.ResponseCallback;
 
 
 public class TestActivity extends AppCompatActivity {

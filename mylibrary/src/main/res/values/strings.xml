@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidLibrary</string>
+    <string name="downLoading">正在加载中...</string>
+    <string name="update">发现新版本，是否升级？</string>
+    <string name="new_version">已新版本</string>
+    <string name="system_update">检测版本</string>
+</resources>

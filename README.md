@@ -6,31 +6,11 @@
 引用步骤：
 1.gradle 引用
 
-   allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-		
-   dependencies {
-    	        implementation 'com.github.padan88:ztzbAndroid:1.1'
-    	}
+![image](https://user-images.githubusercontent.com/19809516/130536527-937ffb1c-8147-4d78-92a5-dced3b7af2d8.png)
 
 2.maven 引用
   
-   <repositories>
-   		<repository>
-   		    <id>jitpack.io</id>
-   		    <url>https://jitpack.io</url>
-   		</repository>
-   </repositories>
-   	
-   <dependency>
-    	    <groupId>com.github.padan88</groupId>
-    	    <artifactId>ztzbAndroid</artifactId>
-    	    <version>1.1</version>
-    </dependency>
+ ![image](https://user-images.githubusercontent.com/19809516/130536567-3f76350a-5ccf-4012-95ba-cec042711af8.png)
 
 3.引用网络工具okhttp3,在工具基础上做二次封装get,post等请求方式及文件，图片上传下载等方法；
 

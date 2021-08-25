@@ -26,7 +26,8 @@ import okhttp3.ResponseBody;
 public class RequetInterceptor implements Interceptor {
 
     private Context context;
-    public  RequetInterceptor(Context context){
+
+    public RequetInterceptor(Context context) {
         this.context = context;
     }
 
@@ -42,17 +43,16 @@ public class RequetInterceptor implements Interceptor {
         //header("lang", LanguageSettings.getInstance().getCurrentLanguage())
         Request request;
         String token = PreferencesUtils.getString(context, "TOKEN");
-        if (TextUtils.isEmpty(token)){
+        if (TextUtils.isEmpty(token)) {
             request = chain.request()
                     .newBuilder()
                     .build();
-        }else {
+        } else {
             request = chain.request()
                     .newBuilder()
                     .header("Authorization", token)
                     .build();
         }
-
 
 
         /**

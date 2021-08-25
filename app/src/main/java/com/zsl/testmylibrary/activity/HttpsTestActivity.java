@@ -1,6 +1,7 @@
-package com.zsl.testmylibrary.Activity;
+package com.zsl.testmylibrary.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,9 +13,10 @@ import com.zsl.mylibrary.httpsUtils.HttpRequest;
 import com.zsl.mylibrary.httpsUtils.OkHttpException;
 import com.zsl.mylibrary.httpsUtils.ResponseCallback;
 import com.zsl.testmylibrary.R;
+import com.zsl.testmylibrary.config.AppSettings;
 
 
-public class TestActivity extends AppCompatActivity {
+public class HttpsTestActivity extends AppCompatActivity {
 
     private Button login;
 
@@ -36,12 +38,14 @@ public class TestActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        String url = "http://tic.cregcloud.com/tic_server/g/mobile/sys/getApkMeta";
-        new HttpRequest(this).getDataApi(url,new ResponseCallback(){
+        new HttpRequest(this).getDataApi(AppSettings.AppVersionData,new ResponseCallback(){
 
             @Override
             public void onSuccess(Object object) {
                 Log.d("==============",object.toString());
+                Intent intent = new Intent("com.admin.login");
+                sendBroadcast(intent);
+                finish();
             }
 
             @Override

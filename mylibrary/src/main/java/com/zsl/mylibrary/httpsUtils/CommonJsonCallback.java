@@ -35,6 +35,7 @@ public class CommonJsonCallback<T> implements Callback {
     protected final String RESULT_CODE = "code";
     protected final int RESULT_CODE_VALUE = 0;
     protected final int RESULT_CODE_VALUE_err = 5;
+    protected final int RESULT_CODE_auth = 1;
     /**
      * errorMsg字段提示信息，实际根据自己接口返回为准
      */
@@ -50,16 +51,18 @@ public class CommonJsonCallback<T> implements Callback {
     protected final int JSON_ERROR = -2; //解析失败
     protected final int OTHER_ERROR = -3; //未知错误
     protected final int TIMEOUT_ERROR = -4; //请求超时
+    protected final int auth_ERROR = -4; //请求超时
     private Dialog dialog;
     private Context context;
 
     private Handler mDeliveryHandler; //进行消息的转发
     private ResponseCallback<T> mListener;
 
-    public  CommonJsonCallback(ResposeDataHandle handle) {
+    public CommonJsonCallback(ResposeDataHandle handle) {
         this.mListener = handle.mListener;
         this.mDeliveryHandler = new Handler(Looper.getMainLooper());
     }
+
     public CommonJsonCallback(ResposeDataHandle handle, Context context) {
         this.mListener = handle.mListener;
         this.mDeliveryHandler = new Handler(Looper.getMainLooper());
@@ -73,7 +76,7 @@ public class CommonJsonCallback<T> implements Callback {
      */
     @Override
     public void onFailure(@NonNull Call call, @NonNull final IOException e) {
-        if (dialog != null){
+        if (dialog != null) {
             dialog.dismiss();
         }
         Log.e("TAG", "请求失败=" + e.getMessage());
@@ -114,7 +117,7 @@ public class CommonJsonCallback<T> implements Callback {
      * 处理Http成功的响应
      */
     private void handleResponse(Object responseObj) {
-        if (dialog != null){
+        if (dialog != null) {
             dialog.dismiss();
         }
         if (responseObj == null && responseObj.toString().trim().equals("")) {
@@ -128,8 +131,10 @@ public class CommonJsonCallback<T> implements Callback {
                 if (result.getInt(RESULT_CODE) == RESULT_CODE_VALUE) {
                     Object data = result.getString("result");
                     mListener.onSuccess(data); //(T) responseObj
+                } else if (result.getInt(RESULT_CODE) == RESULT_CODE_auth) {
+                    mListener.onFailure(new OkHttpException(OTHER_ERROR, result.get(ERROR_MSG).toString()));
                 } else { //将服务端返回的异常回调到应用层去处理
-                    mListener.onFailure(new OkHttpException(OTHER_ERROR, result.get(ERROR_MSG) + ""));
+                    mListener.onFailure(new OkHttpException(auth_ERROR, result.get(ERROR_MSG).toString()));
                     Log.e("TAG", "onResponse处理失败");
                 }
             }

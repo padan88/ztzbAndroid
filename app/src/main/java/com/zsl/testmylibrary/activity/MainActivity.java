@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.zsl.testmylibrary.base.BaseActivity;
 import com.zsl.mylibrary.toastUtils.ToastUtil;
 import com.zsl.testmylibrary.R;
+import com.zsl.testmylibrary.glide.GlideUseActivity;
 
 /**
  * @Description:一句话描述这个类
@@ -71,7 +73,7 @@ public class MainActivity extends BaseActivity {
                 ToastUtil.showShortToastTop(this,"dialog");
                 break;
             case R.id.glide:
-                ToastUtil.showShortToastTop(this,"glide");
+                startActivity(new Intent(this, GlideUseActivity.class));
                 break;
             case R.id.gson:
                 ToastUtil.showShortToastTop(this,"gson");

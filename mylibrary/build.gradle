@@ -38,4 +38,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.1.1'
     /*MQ信息*/
     implementation 'io.nats:jnats:2.11.4'
+    /*超级工具类*/
+    implementation 'com.blankj:utilcode:1.23.5'
+
 }

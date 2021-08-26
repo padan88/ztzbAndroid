@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.google.gson.Gson;
 import com.zsl.mylibrary.R;
 import com.zsl.mylibrary.entity.RspSoftUpdate;
@@ -116,7 +117,7 @@ public class AutoUpdate {
                 new HttpRequest(context).getImgApi(apkUrl, filePath,fileName, new ResponseByteCallback() {
                     @Override
                     public void onSuccess(File file) {
-                        installNormal(file.getPath());
+                        AppUtils.installApp(file.getPath());
                     }
 
                     @Override
@@ -128,31 +129,5 @@ public class AutoUpdate {
         } else {
             Toast.makeText(context, "请检查网络连接", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private static void installNormal(String apkPath) {
-        //7.0以上通过FileProvider
-        if (Build.VERSION.SDK_INT >= 26) {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setDataAndType(getUriForFile(context, new File(apkPath)), "application/vnd.android.package-archive");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            context.startActivity(intent);
-        } else {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setDataAndType(Uri.parse("file://" + apkPath), "application/vnd.android.package-archive");
-            context.startActivity(intent);
-        }
-    }
-
-    private static Uri getUriForFile(Context context, File file) {
-        Uri fileUri;
-        if (Build.VERSION.SDK_INT >= 24) {
-            //参数：authority 需要和清单文件中配置的保持完全一致：${applicationId}.xxx
-            fileUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", file);
-        } else {
-            fileUri = Uri.fromFile(file);
-        }
-        return fileUri;
     }
 }

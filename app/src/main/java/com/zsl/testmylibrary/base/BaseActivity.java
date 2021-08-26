@@ -1,5 +1,6 @@
-package com.zsl.mylibrary.base;
+package com.zsl.testmylibrary.base;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.zsl.mylibrary.activityUtils.ActivityUtil;
+import com.zsl.testmylibrary.recevier.ExitBroadcastReceiver;
 
 /**
  * @Description:activity 基础类
@@ -18,6 +20,8 @@ import com.zsl.mylibrary.activityUtils.ActivityUtil;
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+
+    private ExitBroadcastReceiver locallReceiver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     /**
      * 获取跳转传参或者缓存去指
      */
-    public abstract void getData();
+    public void getData(){};
 
     /**
      * 处理业务逻辑
@@ -66,11 +70,35 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     /**
      * 事件监听
      */
-    public abstract void setListener();
+    public void setListener(){};
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        register();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(locallReceiver);
+    }
+
+    /**
+     * 注册广播接收器
+     */
+    private void register(){
+        // 注册广播接收器
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.admin.login");
+        locallReceiver = new ExitBroadcastReceiver();
+        registerReceiver(locallReceiver, intentFilter);
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ActivityUtil.getInstance().removeActivity(this);
     }
+
 }

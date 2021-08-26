@@ -45,4 +45,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     /*MQ信息*/
     implementation 'io.nats:jnats:2.11.4'
+    /*超级工具类*/
+    implementation 'com.blankj:utilcode:1.23.5'
 }

@@ -2,12 +2,9 @@ package com.zsl.testmylibrary;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.IntentFilter;
 
+import com.blankj.utilcode.util.CrashUtils;
 import com.zsl.mylibrary.StartLibrary;
-import com.zsl.mylibrary.activityUtils.ActivityUtil;
-import com.zsl.testmylibrary.receiver.ExitBroadcastReceiver;
-import com.zsl.testmylibrary.activity.MainActivity;
 
 
 /**
@@ -21,28 +18,14 @@ import com.zsl.testmylibrary.activity.MainActivity;
 public class MyApplication extends Application {
     private static Context context;
     private boolean isCarsh = true;
-    private ExitBroadcastReceiver locallReceiver;
 
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        StartLibrary.init(context);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.admin.loginout");
-        locallReceiver = new ExitBroadcastReceiver();
-        registerReceiver(locallReceiver, intentFilter);
+        StartLibrary.init(context);;
     }
     public static Context getContext(){
         return  context;
-    }
-
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        // 取消注册广播接收器
-        unregisterReceiver(locallReceiver);
     }
 }

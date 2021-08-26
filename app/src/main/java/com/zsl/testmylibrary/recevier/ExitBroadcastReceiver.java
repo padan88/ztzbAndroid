@@ -16,6 +16,7 @@ import com.zsl.testmylibrary.activity.MainActivity;
  * @Version: V 1.0
  */
 public class ExitBroadcastReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         ActivityUtil.getInstance().finishAllActivity();  // 销毁所有活动

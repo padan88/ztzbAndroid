@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.zsl.testmylibrary.app.AppDataActivity;
 import com.zsl.testmylibrary.base.BaseActivity;
 import com.zsl.mylibrary.toastUtils.ToastUtil;
 import com.zsl.testmylibrary.R;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity {
                startActivity(new Intent(this,HttpsTestActivity.class));
                 break;
             case R.id.act:
-                ToastUtil.showLongToastCenter(this,"activity");
+                startActivity(new Intent(this, AppDataActivity.class));
                 break;
             case R.id.cryption:
                 ToastUtil.showShortToastTop(this,"cryption");

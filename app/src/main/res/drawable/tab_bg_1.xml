@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 默认时的背景图片-->
+    <!-- <item android:drawable="@color/white" />-->
+    <!-- 没有焦点时的背景图片 -->
+    <item android:state_selected="false" android:drawable="@color/color_back_gray1" />
+
+    <item android:state_selected="true"   android:drawable="@color/color_botton_bg" />
+
+</selector>

@@ -9,4 +9,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="first_name">会议</string>
+    <string name="second_name">资料</string>
+    <string name="three_name">文档</string>
+    <string name="four_name">收藏</string>
+    <string name="five_name">语音</string>
 </resources>

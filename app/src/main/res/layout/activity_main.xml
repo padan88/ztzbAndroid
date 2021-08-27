@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="加密"
+        android:text="tablayout"
         android:textColor="@color/color_text_blue"
         android:textSize="20sp"
         tools:ignore="MissingConstraints" />
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="gson"
+        android:text="首页框架"
         android:textColor="@color/color_text_blue"
         android:textSize="20sp"
         tools:ignore="MissingConstraints" />

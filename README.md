@@ -53,3 +53,13 @@ toastUtils  1.Toast封装
 crashUtils 1.系统崩溃日志管理工具
 
 StartLibrary  项目启动类    application中调用启动方法 init(context)  
+
+引用 Android  工具类AndroidUtilCode   https://github.com/Blankj/AndroidUtilCode
+
+8.添加首页框架
+
+9.添加tablayout+Viewpage 懒加载DEMO
+
+10.获取APP信息，获取网络信息，获取设备信息，改变状态栏信息，
+
+11.下载即用，封装基本包括常用功能及组件

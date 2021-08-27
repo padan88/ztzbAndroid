@@ -5,10 +5,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.zsl.testmylibrary.app.AppDataActivity;
+import com.zsl.testmylibrary.bar.BarActivity;
 import com.zsl.testmylibrary.base.BaseActivity;
 import com.zsl.mylibrary.toastUtils.ToastUtil;
 import com.zsl.testmylibrary.R;
 import com.zsl.testmylibrary.glide.GlideUseActivity;
+import com.zsl.testmylibrary.main.MainPageActivity;
+import com.zsl.testmylibrary.tablayout.LazyLoadActivity;
 
 /**
  * @Description:一句话描述这个类
@@ -68,7 +71,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, AppDataActivity.class));
                 break;
             case R.id.cryption:
-                ToastUtil.showShortToastTop(this,"cryption");
+                startActivity(new Intent(this, LazyLoadActivity.class));
                 break;
             case R.id.dialog:
                 ToastUtil.showShortToastTop(this,"dialog");
@@ -77,10 +80,10 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, GlideUseActivity.class));
                 break;
             case R.id.gson:
-                ToastUtil.showShortToastTop(this,"gson");
+                startActivity(new Intent(this, MainPageActivity.class));
                 break;
             case R.id.statusBar:
-                ToastUtil.showImgToast(this,"statusBar",R.drawable.ic_launcher_background);
+                startActivity(new Intent(this, BarActivity.class));
                 break;
         }
     }

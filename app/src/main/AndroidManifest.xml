@@ -17,7 +17,7 @@
         android:networkSecurityConfig="@xml/netconfig"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestMyLibrary">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name">
@@ -30,6 +30,9 @@
         <activity android:name=".activity.HttpsTestActivity"></activity>
         <activity android:name=".glide.GlideUseActivity"></activity>
         <activity android:name=".app.AppDataActivity"></activity>
+        <activity android:name=".tablayout.LazyLoadActivity"></activity>
+        <activity android:name=".main.MainPageActivity"></activity>
+        <activity android:name=".bar.BarActivity"></activity>
     </application>
 
 </manifest>

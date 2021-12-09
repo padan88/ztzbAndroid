@@ -3,8 +3,10 @@ package com.zsl.testmylibrary;
 import android.app.Application;
 import android.content.Context;
 
-import com.blankj.utilcode.util.CrashUtils;
+import androidx.multidex.MultiDex;
+
 import com.zsl.mylibrary.StartLibrary;
+import com.zsl.testmylibrary.config.AppSettings;
 
 
 /**
@@ -23,7 +25,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        StartLibrary.init(context);;
+        StartLibrary.init(context, AppSettings.AppPath,AppSettings.Base_Host);
+        MultiDex.install(this);
     }
     public static Context getContext(){
         return  context;

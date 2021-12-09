@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description:一句话描述这个类
+ * @Description:数据类型转换
  * @PackgeName: com.ztzb.zsllibrary.gsonUtils
  * @ClassName: gsonUtils
  * @Author: Zsl

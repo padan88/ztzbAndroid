@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.zsl.mylibrary.activityUtils.ActivityUtil;
 import com.zsl.testmylibrary.recevier.ExitBroadcastReceiver;
 
+
 /**
  * @Description:activity 基础类
  * @PackgeName: com.zsl.testmylibrary.Activity
@@ -32,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             //所以要移除旧的Fragment,重新初始化新的Fragment
             savedInstanceState.remove("android:support:fragments");
         }
+//        ButterKnife.bind(this);
         setContentView(getLayout());
         ActivityUtil.getInstance().addActivity(this);
         initView();

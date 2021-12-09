@@ -8,7 +8,7 @@ import com.zsl.testmylibrary.R;
 import com.zsl.testmylibrary.base.BaseActivity;
 
 /**
- * @Description:一句话描述这个类
+ * @Description:控制状态栏显隐
  * @PackgeName: com.zsl.testmylibrary.bar
  * @ClassName: BarActivity
  * @Author: Zsl

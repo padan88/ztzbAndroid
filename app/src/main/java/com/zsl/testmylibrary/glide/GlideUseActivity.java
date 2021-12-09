@@ -1,12 +1,9 @@
 package com.zsl.testmylibrary.glide;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
-
-import com.zsl.mylibrary.glideUtils.GlideUtil;
+import com.zsl.mylibrary.utils.glide.GlideUtil;
 import com.zsl.testmylibrary.R;
 import com.zsl.testmylibrary.base.BaseActivity;
 

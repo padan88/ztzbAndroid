@@ -1,15 +1,13 @@
 package com.zsl.testmylibrary.activity;
 
-
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.zsl.mylibrary.apiUtils.ZHttp;
+import com.zsl.mylibrary.apiUtils.base.BaseObserver;
+import com.zsl.mylibrary.apiUtils.base.RxJavaHelper;
 import com.zsl.mylibrary.appUpdate.AutoUpdate;
-import com.zsl.mylibrary.httpsUtils.HttpRequest;
-import com.zsl.mylibrary.httpsUtils.OkHttpException;
-import com.zsl.mylibrary.httpsUtils.ResponseCallback;
+import com.zsl.mylibrary.toastUtils.ToastUtil;
 import com.zsl.testmylibrary.R;
 import com.zsl.testmylibrary.base.BaseActivity;
 import com.zsl.testmylibrary.config.AppSettings;
@@ -17,7 +15,7 @@ import com.zsl.testmylibrary.config.AppSettings;
 
 public class HttpsTestActivity extends BaseActivity {
 
-    private Button login;
+    Button login;
 
     @Override
     public int getLayout() {
@@ -41,7 +39,7 @@ public class HttpsTestActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.login:
                 getAppData();
         }
@@ -53,23 +51,35 @@ public class HttpsTestActivity extends BaseActivity {
      */
     private void getAppData() {
 
-//        new AutoUpdate(this).checkUpdate(AppSettings.Base_Host,"/g/mobile/sys/getApkMeta",AppSettings.AppPath);
-        new HttpRequest(this).getDataApi("",new ResponseCallback(){
+  /*      ZHttp.getApi()
+                .testGet()
+                .compose(RxJavaHelper.observeOnMainThread())
+                .subscribe(new BaseObserver(this) {
+
+                    @Override
+                    public void onSuccess(Object response) {
+                        ToastUtil.showShortToast(HttpsTestActivity.this, response.toString());
+                    }
+                });*/
+
+
+        new AutoUpdate(this).checkUpdate(AppSettings.Base_Host,AppSettings.AppPath);
+/*        new HttpRequest(this).getDataApi("", new ResponseCallback() {
 
             @Override
             public void onSuccess(Object object) {
-                Log.d("==============",object.toString());
+                Log.d("==============", object.toString());
             }
 
             @Override
             public void onFailure(OkHttpException failuer) {
                 // 认证失败时退出登录页面
-                if (failuer.getEcode() == -4){
+                if (failuer.getEcode() == -4) {
                     Intent intent = new Intent("com.admin.login");
                     sendBroadcast(intent);
                 }
-                Log.d("==============",failuer.getEmsg());
+                Log.d("==============", failuer.getEmsg());
             }
-        });
+        });*/
     }
 }

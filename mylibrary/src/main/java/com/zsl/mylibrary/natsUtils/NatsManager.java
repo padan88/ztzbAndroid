@@ -1,7 +1,10 @@
 package com.zsl.mylibrary.natsUtils;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
+
+import androidx.annotation.RequiresApi;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -47,6 +50,7 @@ public class NatsManager {
                     connect = true;
                     mIDataCollector.setConnect(connect);
                     Dispatcher d = nc.createDispatcher(new MessageHandler() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                         @Override
                         public void onMessage(Message msg) throws InterruptedException {
                             if (!TextUtils.isEmpty(msg.getReplyTo())){
@@ -69,10 +73,12 @@ public class NatsManager {
         }).start();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void pub(String topic, String msg) {
         nc.publish(topic, msg.getBytes(StandardCharsets.UTF_8));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static void request(String topic, String msg) {
         try {
             Message responseMsg = nc.request(topic, msg.getBytes(StandardCharsets.UTF_8), Duration.ofSeconds(2));

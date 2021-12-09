@@ -1,6 +1,5 @@
-package com.zsl.mylibrary.glideUtils;
+package com.zsl.mylibrary.utils.glide;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 

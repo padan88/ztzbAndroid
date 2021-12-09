@@ -13,6 +13,6 @@ public class AppSettings {
     public static final String CrashLogPath = MyApplication.getContext().getExternalCacheDir()+ File.separator; // 日志保存路径
     public static final String PicturesPath = MyApplication.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)+ File.separator;; //图片保存路径
     //服务路径设置
-    public static final String Base_Host = Debug ? "http://icax.cregcloud.com/icax" : "http://tic.cregcloud.com/tic_server"; //tic.cregcloud.com/tic_server
+    public static final String Base_Host = Debug ? "http://ic.cregcloud.com/ic/" : "http://tic.cregcloud.com/tic_server/"; //tic.cregcloud.com/tic_server
     public static final  String AppVersionData = Base_Host + "/g/mobile/sys/getApkMeta"; //获取版本信息
 }
